@@ -69,7 +69,6 @@ std::vector<cv::Mat> Segmenter::getLineSegments(const cv::Mat &image, float thre
 
     if (bgValue < threshold)
     {
-        std::cout << "Inverting image. thr: " << threshold << " pixel: " << bgValue << std::endl;
         bgValue = 255 - bgValue;
         cv::bitwise_not(image, image);
     }

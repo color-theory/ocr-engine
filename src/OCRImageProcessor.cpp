@@ -7,17 +7,9 @@ using json = nlohmann::json;
 
 std::string OCRImageProcessor::serializeToJson(const std::vector<std::vector<float>> &data)
 {
-    nlohmann::json root;
-    for (const auto &array : data)
-    {
-        nlohmann::json jsonArray = nlohmann::json::array();
-        for (float value : array)
-        {
-            jsonArray.push_back(value);
-        }
-        root.push_back(jsonArray);
-    }
-    return root.dump();
+    json jsonObject;
+    jsonObject["images"] = data;
+    return jsonObject.dump();
 }
 
 OCRImageProcessor::OCRImageProcessor(const std::string &filePath)
